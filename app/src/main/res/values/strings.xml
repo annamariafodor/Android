@@ -2,4 +2,8 @@
     <string name="app_name">WhereToEat</string>
     <string name="where_to_eat">Where to eat?</string>
     <string name="logo">logo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_new_account">Create new account</string>
 </resources>
