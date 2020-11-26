@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:id="@+id/rowLayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/restaurant" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:text="@string/name"
+            android:textSize="18sp"
+            app:drawableLeftCompat="@drawable/ic_baseline_food_bank_24"
+            android:layout_below="@+id/imageView"/>
+
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:text="@string/address"
+            android:textSize="18sp"
+            app:drawableLeftCompat="@drawable/ic_baseline_location_on_24"
+            android:layout_below="@id/name"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:text="@string/price"
+            android:textSize="18sp"
+            app:drawableLeftCompat="@drawable/ic_baseline_attach_money_24"
+            android:layout_below="@+id/address"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+</layout>

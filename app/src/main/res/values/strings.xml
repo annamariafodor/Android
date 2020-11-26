@@ -10,7 +10,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="full_name">Full name</string>
     <string name="phone_number">Phone number</string>
-    <string name="address">Address</string>
     <string name="register">REGISTER</string>
     <string name="home">Home</string>
     <string name="favourites">Favourites</string>
@@ -18,4 +17,7 @@
     <string name="hello_profile_fragment">Hello profile fragment</string>
     <string name="hello_favourites_fragment">Hello favourites fragment</string>
     <string name="hello_home_fragment">Hello home fragment</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="price">Price</string>
 </resources>
