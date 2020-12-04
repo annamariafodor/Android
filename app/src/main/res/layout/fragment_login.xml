@@ -17,24 +17,19 @@
             android:id="@+id/logo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
             android:contentDescription="@string/logo"
             android:src="@drawable/logo2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/emailInputLayout"
+            app:layout_constraintEnd_toEndOf="@id/emailInputLayout"
+            app:layout_constraintStart_toStartOf="@id/passwordInputLayout"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_horizontal_margin"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="@dimen/global_horizontal_margin"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
@@ -42,9 +37,10 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:layout_constraintEnd_toEndOf="@+id/passwordInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/passwordInputLayout"
+            app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
+            android:layout_marginBottom="15dp"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -61,7 +57,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/global_horizontal_margin"
-            android:layout_marginTop="15dp"
             android:layout_marginEnd="@dimen/global_horizontal_margin"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
@@ -72,7 +67,8 @@
             app:boxStrokeWidthFocused="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -88,14 +84,12 @@
             android:id="@+id/loginButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_horizontal_margin"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="@dimen/global_horizontal_margin"
             android:background="@drawable/rounded_button"
             android:text="@string/login"
             app:backgroundTint="@color/dark3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/passwordInputLayout"
+            app:layout_constraintStart_toStartOf="@id/passwordInputLayout"
             app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
         <TextView
@@ -107,8 +101,9 @@
             android:focusable="true"
             android:text="@string/create_new_account"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/loginButton"
+            app:layout_constraintStart_toStartOf="@id/loginButton"
             app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 

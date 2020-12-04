@@ -44,9 +44,7 @@
             android:id="@+id/nameInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_horizontal_margin"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="@dimen/global_horizontal_margin"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
@@ -54,8 +52,8 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/emailInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/emailInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
             app:startIconDrawable="@drawable/ic_baseline_account_circle_24">
 
@@ -72,9 +70,7 @@
             android:id="@+id/phoneInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_horizontal_margin"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="@dimen/global_horizontal_margin"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
@@ -82,8 +78,8 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/nameInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/nameInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
             app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
@@ -100,9 +96,7 @@
             android:id="@+id/addressInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_horizontal_margin"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="@dimen/global_horizontal_margin"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
@@ -110,8 +104,8 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/phoneInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/phoneInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/phoneInputLayout"
             app:startIconDrawable="@drawable/ic_baseline_location_on_24">
 
@@ -128,9 +122,7 @@
             android:id="@+id/passwordInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_horizontal_margin"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="@dimen/global_horizontal_margin"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
@@ -138,8 +130,8 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/addressInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/addressInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/addressInputLayout"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
@@ -157,14 +149,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/global_horizontal_margin"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/global_horizontal_margin"
             android:background="@drawable/rounded_button"
             android:text="@string/register"
             app:backgroundTint="@color/dark3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
+            app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
