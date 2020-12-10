@@ -4,36 +4,57 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheretoeat.R
 import com.example.wheretoeat.models.Restaurant
+import com.example.wheretoeat.ui.HomeFragment
 
-class RestaurantAdapter (private var restaurants: List<Restaurant>): RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
-
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-//        val restaurantName = holder.itemView.findViewById<TextView>(R.id.name)
-//        val restaurantNamestaurantAddress = holder.itemView.findViewById<TextView>(R.id.address)
-//        val restaurantPrice = holder.itemView.findViewById<TextView>(R.id.price)
-    }
+class RestaurantAdapter(
+    private var restaurants: List<Restaurant>,
+    private var listener: OnItemClickListener
+) : RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.restaurant_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.restaurant_list_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = restaurants[position]
-        val restaurantName = holder.itemView.findViewById<TextView>(R.id.name)
-        val restaurantAddress = holder.itemView.findViewById<TextView>(R.id.address)
-        val restaurantPrice = holder.itemView.findViewById<TextView>(R.id.price)
-
-        restaurantName.text = currentItem.name
-        restaurantAddress.text = currentItem.address
-        restaurantPrice.text = currentItem.price.toString()
+        holder.restaurantName.text = currentItem.name
+        holder.restaurantAddress.text = currentItem.address
+        holder.restaurantPrice.text = currentItem.price.toString()
     }
 
     override fun getItemCount(): Int = restaurants.size
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+        val restaurantName: TextView = itemView.findViewById<TextView>(R.id.name)
+        val restaurantAddress: TextView = itemView.findViewById<TextView>(R.id.address)
+        val restaurantPrice: TextView = itemView.findViewById<TextView>(R.id.price)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(restaurants[position])
+            }
+        }
+
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Restaurant)
+    }
+
+
 }
+

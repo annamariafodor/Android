@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home_to_favourites"
             app:destination="@id/favourites" />
+        <action
+            android:id="@+id/action_home_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/favourites"
@@ -65,4 +68,9 @@
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.wheretoeat.ui.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

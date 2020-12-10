@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wheretoeat.R
 import com.example.wheretoeat.adapters.RestaurantAdapter
@@ -16,11 +17,10 @@ import com.example.wheretoeat.databinding.FragmentHomeBinding
 import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.viewmodels.DBViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),RestaurantAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     private lateinit var binding: FragmentHomeBinding
@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
         }
         Log.d("log","dummylist: ${dummyList.toString()}")
 
-        val adapter = RestaurantAdapter(dummyList)
+        val adapter = RestaurantAdapter(dummyList,this)
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -57,5 +57,11 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onItemClick(item: Restaurant) {
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_home_to_detailsFragment)
+    }
+
 
 }
