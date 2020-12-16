@@ -1,8 +1,10 @@
 package com.example.wheretoeat.viewmodels
 
 import android.app.Application
+import android.provider.ContactsContract
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.wheretoeat.room.User
 import com.example.wheretoeat.room.UserDatabase
@@ -12,8 +14,9 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<User>>
+    val readAllData: LiveData<List<User>>
     private val repository: UserRepository
+    var user: MutableLiveData<User> = MutableLiveData()
 
     init {
         val userDao = UserDatabase.getDatabase(application).userDao()
@@ -21,9 +24,16 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         readAllData = repository.readAllData
     }
 
-    fun addUser(user: User){
+    fun addUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(user)
+        }
+    }
+
+    fun getUserByEmail(email: String,password: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = repository.getUserByEmail(email,password)
+            user.postValue(response)
         }
     }
 
