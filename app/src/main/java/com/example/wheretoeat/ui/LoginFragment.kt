@@ -4,18 +4,20 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.wheretoeat.R
 import com.example.wheretoeat.databinding.FragmentLoginBinding
+import com.example.wheretoeat.room.User
 import com.example.wheretoeat.viewmodels.UserViewModel
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -48,31 +50,17 @@ class LoginFragment : Fragment() {
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
-            mUserViewModel.user.observe(viewLifecycleOwner, Observer {
-                Log.d("log", "readAllData22: $it")
-                if (it == null) {
-                    Toast.makeText(activity, "Invalid email or password", Toast.LENGTH_SHORT).show()
-                    binding.emailInput.text!!.clear()
-                    binding.passwordInput.text!!.clear()
-                } else {
-                    val editor = sharedPreferences.edit()
-                    editor.clear()
-                    editor.putString("email", binding.emailInput.text.toString())
-                    editor.putString("name", it.name)
-                    editor.putString("phone", it.phone)
-                    editor.putString("address", it.address)
-                    editor.putString("password", it.password)
-                    editor.apply()
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                }
-            })
+            mUserViewModel.user.observe(viewLifecycleOwner, dataObserver)
 
             mUserViewModel.getUserByEmail(
                 binding.emailInput.text.toString(),
                 binding.passwordInput.text.toString().toMd5()
             )
 
-
+            binding.emailInput.text!!.clear()
+            binding.passwordInput.text!!.clear()
+            binding.passwordInput.clearFocus()
+            binding.emailInput.clearFocus()
         }
 
 
@@ -84,5 +72,20 @@ class LoginFragment : Fragment() {
         return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
     }
 
+    private val dataObserver = Observer<User> {
+        if (it == null) {
+            Toast.makeText(activity, "Invalid email or password", Toast.LENGTH_SHORT).show()
+        } else {
+            val editor = sharedPreferences.edit()
+            editor.clear()
+            editor.putString("email", binding.emailInput.text.toString())
+            editor.putString("name", it.name)
+            editor.putString("phone", it.phone)
+            editor.putString("address", it.address)
+            editor.putString("password", it.password)
+            editor.apply()
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        }
+    }
 
 }

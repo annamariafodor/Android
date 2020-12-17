@@ -2,6 +2,7 @@ package com.example.wheretoeat.viewmodels
 
 import android.app.Application
 import android.provider.ContactsContract
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

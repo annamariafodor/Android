@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -37,6 +38,7 @@ class HomeFragment : Fragment(),RestaurantAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        requireActivity().onBackPressedDispatcher.addCallback(this) {}
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         var dummyList: List<Restaurant> = listOf()
