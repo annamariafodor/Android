@@ -12,6 +12,7 @@ class RestaurantViewModel: ViewModel() {
 
     val restaurants: MutableLiveData<List<Restaurant>> = MutableLiveData<List<Restaurant>>()
     private val repository: RestaurantRepository
+    var currentRestaurant: MutableLiveData<Restaurant> = MutableLiveData()
 
     init {
         repository = RestaurantRepository()

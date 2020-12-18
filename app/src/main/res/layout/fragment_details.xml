@@ -1,57 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout6"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.DetailsFragment">
 
-
-    <TextView
-        android:id="@+id/restaurantName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintBottom_toTopOf="@id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/restaurantAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/restaurantPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintTop_toBottomOf="@id/restaurantAddress"
-        app:layout_constraintEnd_toEndOf="@id/restaurantAddress"
-        app:layout_constraintStart_toStartOf="@id/restaurantAddress"
-        android:layout_marginTop="15dp"/>
-
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout6"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:src="@drawable/restaurant"
-        android:background="@color/dark3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/restaurantAddress"
-        app:layout_constraintTop_toBottomOf="@id/restaurantName"/>
+        android:layout_height="match_parent"
+        tools:context=".ui.DetailsFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/restaurantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintBottom_toTopOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:padding="5dp">
+
+
+
+            <TextView
+                android:id="@+id/restaurantAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment"
+                android:layout_toRightOf="@+id/locationIcon"
+                android:layout_marginLeft="3dp"
+                android:layout_toEndOf="@+id/locationIcon"
+                android:layout_marginStart="3dp" />
+
+            <TextView
+                android:id="@+id/restaurantCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment"
+                android:layout_toRightOf="@+id/locationIcon"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/locationIcon"
+                android:layout_marginStart="3dp"
+                android:layout_below="@id/restaurantAddress"/>
+
+            <TextView
+                android:id="@+id/restaurantArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment"
+                android:layout_toRightOf="@+id/locationIcon"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/locationIcon"
+                android:layout_marginStart="3dp"
+                android:layout_below="@id/restaurantCity"/>
+
+            <TextView
+                android:id="@+id/restaurantPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/hello_blank_fragment"
+                android:layout_toRightOf="@+id/priceIcon"
+                android:layout_marginLeft="3dp"
+                android:layout_toEndOf="@+id/priceIcon"
+                android:layout_marginStart="3dp"
+                android:layout_below="@id/restaurantArea"
+                />
+
+            <TextView
+                android:id="@+id/restaurantPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/hello_blank_fragment"
+                android:layout_toRightOf="@+id/phoneIcon"
+                android:layout_marginLeft="3dp"
+                android:layout_toEndOf="@+id/phoneIcon"
+                android:layout_marginStart="3dp"
+                android:layout_below="@id/priceIcon"
+                />
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_location_on_24"
+                tools:ignore="VectorDrawableCompat"
+                android:contentDescription="@string/icon"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp" />
+
+            <ImageView
+                android:id="@+id/priceIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_attach_money_24"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/restaurantArea"
+                tools:ignore="VectorDrawableCompat"
+                android:contentDescription="@string/icon"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp" />
+
+            <ImageView
+                android:id="@+id/phoneIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_phone_24"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/priceIcon"
+                tools:ignore="VectorDrawableCompat"
+                android:contentDescription="@string/icon"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/dark3"
+            android:src="@drawable/restaurant"
+            app:layout_constraintBottom_toTopOf="@id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/restaurantName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

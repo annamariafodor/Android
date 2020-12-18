@@ -49,6 +49,7 @@ class HomeFragment : Fragment(),RestaurantAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(item: Restaurant) {
+        mRestaurantViewModel.currentRestaurant.value = item
         Navigation.findNavController(binding.root)
             .navigate(R.id.action_homeFragment_to_detailsFragment)
     }
