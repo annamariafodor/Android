@@ -61,7 +61,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/name"
+                android:text="@string/name_"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -85,7 +85,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/address"
+                android:text="@string/address_"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/phone"
+                android:text="@string/phone_"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -135,7 +135,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/email"
+                android:text="@string/email_"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

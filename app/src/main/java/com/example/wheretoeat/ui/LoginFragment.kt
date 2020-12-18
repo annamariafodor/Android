@@ -78,7 +78,7 @@ class LoginFragment : Fragment() {
         } else {
             val editor = sharedPreferences.edit()
             editor.clear()
-            editor.putString("email", binding.emailInput.text.toString())
+            editor.putString("email", it.email)
             editor.putString("name", it.name)
             editor.putString("phone", it.phone)
             editor.putString("address", it.address)

@@ -22,4 +22,8 @@
     <string name="address">Address</string>
     <string name="phone">Phone</string>
     <string name="sign_out">Sign out</string>
+    <string name="name_">Name:</string>
+    <string name="address_">Address:</string>
+    <string name="phone_">Phone:</string>
+    <string name="email_">Email:</string>
 </resources>
