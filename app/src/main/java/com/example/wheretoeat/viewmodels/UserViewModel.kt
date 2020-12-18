@@ -1,15 +1,13 @@
 package com.example.wheretoeat.viewmodels
 
 import android.app.Application
-import android.provider.ContactsContract
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.wheretoeat.room.User
+import com.example.wheretoeat.models.User
 import com.example.wheretoeat.room.UserDatabase
-import com.example.wheretoeat.room.UserRepository
+import com.example.wheretoeat.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -9,15 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.wheretoeat.R
 import com.example.wheretoeat.databinding.FragmentSplashBinding
+import com.example.wheretoeat.viewmodels.RestaurantViewModel
 import com.example.wheretoeat.viewmodels.UserViewModel
 
 class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
     private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mRestaurantViewModel: RestaurantViewModel
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,22 +36,23 @@ class SplashFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mRestaurantViewModel = requireActivity().run {  ViewModelProvider(requireActivity()).get(RestaurantViewModel::class.java)}
         requireActivity().findViewById<View>(R.id.bottomNavigationView).visibility = View.GONE
         sharedPreferences =
             requireContext().getSharedPreferences("credentials", Context.MODE_PRIVATE)
         val credentials = sharedPreferences.all
-        if (credentials!!.containsKey("email") && credentials.containsKey("password")) {
-            Log.d("log", "szia ${sharedPreferences.all}")
-            Log.d("log", "szia2 ${sharedPreferences.getString("email","").toString()}")
-            findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
-        } else {
-            Log.d("log", "hello")
-            sharedPreferences.edit().clear().apply()
-            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-        }
 
 
+        mRestaurantViewModel.restaurants.observe(requireActivity(), androidx.lifecycle.Observer {
+            if (credentials!!.containsKey("email") && credentials.containsKey("password")) {
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            } else {
+                sharedPreferences.edit().clear().apply()
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            }
+        })
 
+        mRestaurantViewModel.getRestaurant()
 
         return binding.root
     }

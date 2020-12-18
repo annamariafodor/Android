@@ -1,12 +1,11 @@
 package com.example.wheretoeat.room
 
-import android.net.wifi.p2p.WifiP2pManager
-import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.wheretoeat.models.User
 
 @Dao
 interface UserDao {

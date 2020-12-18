@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://opentable.herokuapp.com/api/"
+private const val BASE_URL = "https://ratpark-api.imok.space/"
 
 private val retrofit = Retrofit.Builder()
 //    .addConverterFactory(ScalarsConverterFactory.create())
@@ -17,8 +17,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface RestaurantApiService {
-    @GET("restaurants?city=Dallas")
-    fun getRestaurants(): Call<RestaurantHolder>
+    @GET("restaurants")
+    suspend fun getRestaurants(): RestaurantHolder
 }
 
 object RestaurantApi {
