@@ -82,6 +82,7 @@ class LoginFragment : Fragment() {
             editor.putString("address", it.address)
             editor.putString("password", it.password)
             editor.apply()
+            mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
     }

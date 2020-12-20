@@ -35,17 +35,22 @@ class SplashFragment : Fragment() {
     ): View? {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel = requireActivity().run { ViewModelProvider(requireActivity()).get(UserViewModel::class.java) }
         mRestaurantViewModel = requireActivity().run {  ViewModelProvider(requireActivity()).get(RestaurantViewModel::class.java)}
         requireActivity().findViewById<View>(R.id.bottomNavigationView).visibility = View.GONE
         sharedPreferences =
             requireContext().getSharedPreferences("credentials", Context.MODE_PRIVATE)
         val credentials = sharedPreferences.all
+        Log.d("log","shared: ${sharedPreferences.all}")
 
 
         mRestaurantViewModel.restaurants.observe(requireActivity(), androidx.lifecycle.Observer {
             if (credentials!!.containsKey("email") && credentials.containsKey("password")) {
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
+                    findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                    Log.d("log","splash: ${mUserViewModel.favourites.value.toString()}")
+                })
+                mUserViewModel.getFavourites(sharedPreferences.getString("email","").toString())
             } else {
                 sharedPreferences.edit().clear().apply()
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment)

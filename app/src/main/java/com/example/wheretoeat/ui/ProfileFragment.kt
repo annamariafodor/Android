@@ -21,7 +21,7 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        requireActivity().findViewById<View>(R.id.bottomNavigationView).visibility = View.VISIBLE
     }
 
     override fun onCreateView(
@@ -37,10 +37,10 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
 
-        binding.nameText.text=sharedPreferences.getString("name","")
-        binding.addressText.text=sharedPreferences.getString("address","")
-        binding.phoneText.text=sharedPreferences.getString("phone","")
-        binding.emailText.text=sharedPreferences.getString("email","")
+        binding.nameText.text = sharedPreferences.getString("name", "")
+        binding.addressText.text = sharedPreferences.getString("address", "")
+        binding.phoneText.text = sharedPreferences.getString("phone", "")
+        binding.emailText.text = sharedPreferences.getString("email", "")
 
         return binding.root
     }

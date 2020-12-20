@@ -12,7 +12,6 @@ import retrofit2.http.Query
 private const val BASE_URL = "https://ratpark-api.imok.space/"
 
 private val retrofit = Retrofit.Builder()
-//    .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
     .addConverterFactory(GsonConverterFactory.create())
     .build()

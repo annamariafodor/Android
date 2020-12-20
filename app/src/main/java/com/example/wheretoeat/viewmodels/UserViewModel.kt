@@ -32,13 +32,25 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getUserByEmail(email: String,password: String) {
+    fun getUserByEmail(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = repository.getUserByEmail(email,password)
+            val response = repository.getUserByEmail(email, password)
             user.postValue(response)
         }
     }
 
+    fun getFavourites(email: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = repository.getFavourites(email)
+            favourites.postValue(response.favourites)
+        }
+    }
+
+    fun updateFavourites(favourites: List<Restaurant>, email: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFavourites(favourites, email)
+        }
+    }
 
 
 }

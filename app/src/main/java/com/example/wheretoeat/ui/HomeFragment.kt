@@ -1,25 +1,19 @@
 package com.example.wheretoeat.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.wheretoeat.R
 import com.example.wheretoeat.adapters.RestaurantAdapter
 import com.example.wheretoeat.databinding.FragmentHomeBinding
@@ -28,8 +22,6 @@ import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.viewmodels.RestaurantViewModel
 import com.example.wheretoeat.viewmodels.UserViewModel
 import java.util.*
-import kotlinx.android.synthetic.main.restaurant_list_item.*
-import kotlinx.android.synthetic.main.restaurant_list_item.view.*
 
 class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
 
@@ -43,7 +35,6 @@ class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
     private lateinit var mUserViewModel: UserViewModel
     private lateinit var mRestaurantViewModel: RestaurantViewModel
     private lateinit var adapter: RestaurantAdapter
-    private lateinit var recyclerView: RecyclerView
     private lateinit var restaurantList: List<Restaurant>
 
 
@@ -56,10 +47,10 @@ class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         bindingCardView =
             DataBindingUtil.inflate(inflater, R.layout.restaurant_list_item, container, false)
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel =
+            requireActivity().run { ViewModelProvider(requireActivity()).get(UserViewModel::class.java) }
         mRestaurantViewModel =
             requireActivity().run { ViewModelProvider(requireActivity()).get(RestaurantViewModel::class.java) }
-
         restaurantList = mRestaurantViewModel.restaurants.value!!
         adapter = RestaurantAdapter(mRestaurantViewModel.restaurants.value!!, this)
         val recyclerView = binding.recyclerView
@@ -132,21 +123,6 @@ class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
         Navigation.findNavController(binding.root)
             .navigate(R.id.action_homeFragment_to_detailsFragment)
     }
-
-    override fun setFavourite(item: Restaurant, position: Int,icon: ImageView) {
-
-//        this.activity?.runOnUiThread {
-        icon.setImageResource(R.drawable.ic_baseline_star_yellow)
-//            recyclerView.adapter?.notifyItemChanged(position)
-        recyclerView.adapter?.notifyDataSetChanged()
-        Log.d("log", "szia")
-//        }
-
-        Log.d("log", "set as favourite")
-
-    }
-
-
 
 
 }

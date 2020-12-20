@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.wheretoeat.R
 import com.example.wheretoeat.databinding.FragmentRegistrationBinding
 import com.example.wheretoeat.models.User
+import com.example.wheretoeat.viewmodels.RestaurantViewModel
 import com.example.wheretoeat.viewmodels.UserViewModel
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -36,7 +37,8 @@ class RegistrationFragment : Fragment() {
     ): View? {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_registration, container, false)
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel = requireActivity().run { ViewModelProvider(requireActivity()).get(
+            UserViewModel::class.java) }
         requireActivity().findViewById<View>(R.id.bottomNavigationView).visibility = View.GONE
         sharedPreferences =
             context?.getSharedPreferences("credentials", Context.MODE_PRIVATE)!!
@@ -56,7 +58,8 @@ class RegistrationFragment : Fragment() {
                         0, binding.emailInput.text.toString(), binding.nameInput.text.toString(),
                         binding.phoneInput.text.toString(),
                         binding.addressInput.text.toString(),
-                        binding.passwordInput.text.toString().toMd5()
+                        binding.passwordInput.text.toString().toMd5(),
+                        mutableListOf()
                     )
                 )
 
@@ -68,7 +71,7 @@ class RegistrationFragment : Fragment() {
                 editor.putString("address", binding.addressInput.text.toString())
                 editor.putString("password", binding.phoneInput.text.toString().toMd5())
                 editor.apply()
-
+                mUserViewModel.getFavourites(sharedPreferences.getString("email","").toString())
                 findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
             } else {
                 Toast.makeText(requireContext(), "Please input datas!", Toast.LENGTH_SHORT).show()

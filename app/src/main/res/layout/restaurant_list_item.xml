@@ -6,7 +6,7 @@
         android:id="@+id/rowLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="10dp">
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -21,22 +21,6 @@
                 android:background="@color/dark3"
                 android:contentDescription="@string/image"
                 android:src="@drawable/restaurant" />
-
-
-            <ImageView
-                android:id="@+id/favouriteIcon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_above="@+id/name"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:contentDescription="@string/image"
-                android:focusable="true"
-                android:src="@drawable/ic_baseline_star_outline_24" />
 
 
             <TextView

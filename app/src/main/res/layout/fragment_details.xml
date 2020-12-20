@@ -9,18 +9,29 @@
         android:layout_height="match_parent"
         tools:context=".ui.DetailsFragment">
 
+            <TextView
+                android:id="@+id/restaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="15dp"
+                android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/restaurantName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
-            app:layout_constraintBottom_toTopOf="@id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="15dp"
-            android:textSize="18sp"/>
+            <ImageView
+                android:id="@+id/favouriteIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantName"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:clickable="true"
+                android:contentDescription="@string/image"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_star_outline_24" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -135,14 +146,15 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
             android:background="@color/dark3"
             android:src="@drawable/restaurant"
             app:layout_constraintBottom_toTopOf="@id/relativeLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/restaurantName" />
+            app:layout_constraintTop_toBottomOf="@id/favouriteIcon"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -17,9 +17,9 @@
             android:id="@+id/logo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/logo"
             android:src="@drawable/logo2"
-            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toTopOf="@+id/emailInputLayout"
             app:layout_constraintEnd_toEndOf="@id/emailInputLayout"
             app:layout_constraintStart_toStartOf="@id/passwordInputLayout"
@@ -30,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="15dp"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
@@ -37,10 +38,9 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
             app:layout_constraintEnd_toEndOf="@+id/passwordInputLayout"
             app:layout_constraintStart_toStartOf="@+id/passwordInputLayout"
-            app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
-            android:layout_marginBottom="15dp"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -65,10 +65,10 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText

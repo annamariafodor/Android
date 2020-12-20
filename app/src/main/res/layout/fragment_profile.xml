@@ -44,15 +44,15 @@
 
 
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            tools:ignore="RtlSymmetry"
-            android:id="@+id/relativeLayout">
+            tools:ignore="RtlSymmetry">
 
             <TextView
                 android:id="@+id/nameTextView"
@@ -157,13 +157,13 @@
             android:id="@+id/signOutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sign_out"
             android:background="@drawable/rounded_button"
+            android:text="@string/sign_out"
             app:backgroundTint="@color/dark3"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/relativeLayout"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/relativeLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
