@@ -6,4 +6,4 @@
 * Requirement for app: minimum 4.1 android version
 
 ## Screenshots
-![screenshots](./splash.png)
+![screenshot](./screenshots/splash.png)
