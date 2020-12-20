@@ -1,5 +1,6 @@
 package com.example.wheretoeat.api
 
+import com.example.wheretoeat.models.City
 import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.models.RestaurantHolder
 import retrofit2.Call
@@ -18,7 +19,13 @@ private val retrofit = Retrofit.Builder()
 
 interface RestaurantApiService {
     @GET("restaurants")
-    suspend fun getRestaurants(): RestaurantHolder
+    suspend fun getRestaurants(@Query("page") page: Int): RestaurantHolder
+
+    @GET("cities")
+    suspend fun getCities(): City
+
+    @GET("restaurants")
+    suspend fun getRestaurantsFromCity(@Query("city") city: String): RestaurantHolder
 }
 
 object RestaurantApi {
