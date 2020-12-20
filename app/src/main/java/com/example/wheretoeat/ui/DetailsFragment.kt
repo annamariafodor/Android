@@ -53,12 +53,12 @@ class DetailsFragment : Fragment() {
         binding.restaurantPhone.text = mRestaurantViewModel.currentRestaurant.value!!.phone
         binding.restaurantPrice.text =
             mRestaurantViewModel.currentRestaurant.value!!.price.toString()
-        checkFavourites()
 
-//        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
-        lisOfFavourites = mUserViewModel.favourites.value!!
-//        })
-//        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
+
+        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
+            lisOfFavourites = mUserViewModel.favourites.value!!
+        })
+        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
 
 
         binding.favouriteIcon.setOnClickListener {
