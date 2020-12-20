@@ -52,9 +52,15 @@ class SplashFragment : Fragment() {
             }
         })
 
-        mRestaurantViewModel.getRestaurant()
+        mRestaurantViewModel.getRestaurant(1)
+        mRestaurantViewModel.getCities()
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mRestaurantViewModel.restaurants.removeObservers(requireActivity())
     }
 
 }

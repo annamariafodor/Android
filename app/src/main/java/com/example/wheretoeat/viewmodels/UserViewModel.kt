@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.wheretoeat.models.City
 import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.models.User
 import com.example.wheretoeat.room.UserDatabase
@@ -37,5 +38,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             user.postValue(response)
         }
     }
+
+
 
 }

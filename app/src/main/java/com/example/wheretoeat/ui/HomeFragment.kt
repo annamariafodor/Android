@@ -7,8 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SearchView
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -21,11 +27,11 @@ import com.example.wheretoeat.databinding.RestaurantListItemBinding
 import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.viewmodels.RestaurantViewModel
 import com.example.wheretoeat.viewmodels.UserViewModel
+import java.util.*
 import kotlinx.android.synthetic.main.restaurant_list_item.*
 import kotlinx.android.synthetic.main.restaurant_list_item.view.*
 
 class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,8 @@ class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
     private lateinit var mRestaurantViewModel: RestaurantViewModel
     private lateinit var adapter: RestaurantAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var restaurantList: List<Restaurant>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,12 +60,69 @@ class HomeFragment : Fragment(), RestaurantAdapter.OnItemClickListener {
         mRestaurantViewModel =
             requireActivity().run { ViewModelProvider(requireActivity()).get(RestaurantViewModel::class.java) }
 
-//        val adapter = RestaurantAdapter(mRestaurantViewModel.restaurants.value!!,this)
+        restaurantList = mRestaurantViewModel.restaurants.value!!
         adapter = RestaurantAdapter(mRestaurantViewModel.restaurants.value!!, this)
-//        val recyclerView = binding.recyclerView
-        recyclerView = binding.recyclerView
+        val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val newList = mutableListOf<Restaurant>()
+                if (newText!!.isNotEmpty()) {
+                    newList.clear()
+                    val search = newText.toLowerCase(Locale.getDefault())
+                    mRestaurantViewModel.restaurants.value!!.forEach {
+                        if (it.name.toLowerCase(Locale.getDefault()).contains(search)) {
+                            newList.add(it)
+                        }
+                    }
+                    adapter.setData(newList)
+                } else {
+                    newList.addAll(mRestaurantViewModel.restaurants.value!!)
+                    adapter.setData(newList)
+                }
+
+                return true
+            }
+
+        })
+
+        val arrayAdapter =
+            context?.let {
+                ArrayAdapter(
+                    it,
+                    android.R.layout.simple_spinner_item,
+                    mRestaurantViewModel.cities.value!!.cities
+                )
+            }
+        arrayAdapter!!.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = arrayAdapter
+
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                mRestaurantViewModel.restaurants.observe(viewLifecycleOwner, Observer {
+                    adapter.setData(mRestaurantViewModel.restaurants.value!!)
+                })
+                mRestaurantViewModel.currentCity.observe(viewLifecycleOwner, Observer {
+                    mRestaurantViewModel.getRestaurantByCity(binding.spinner.selectedItem.toString())
+                })
+                mRestaurantViewModel.currentCity.value = binding.spinner.selectedItem.toString()
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+        }
 
         return binding.root
     }
