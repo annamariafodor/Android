@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">WhereToEat</string>
+    <string name="where_to_eat">Where to eat?</string>
+    <string name="logo">logo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_new_account">Create new account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name">Full name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="register">REGISTER</string>
+    <string name="home">Home</string>
+    <string name="favourites">Favourites</string>
+    <string name="profile">Profile</string>
+    <string name="hello_profile_fragment">Hello profile fragment</string>
+    <string name="hello_favourites_fragment">Hello favourites fragment</string>
+    <string name="hello_home_fragment">Hello home fragment</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="sign_out">Sign out</string>
+    <string name="name_">Name:</string>
+    <string name="address_">Address:</string>
+    <string name="phone_">Phone:</string>
+    <string name="email_">Email:</string>
+    <string name="icon">icon</string>
+    <string name="image">image</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="open_map">Open Map</string>
 </resources>
