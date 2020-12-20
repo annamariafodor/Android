@@ -28,4 +28,6 @@
     <string name="email_">Email:</string>
     <string name="icon">icon</string>
     <string name="image">image</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="open_map">Open Map</string>
 </resources>

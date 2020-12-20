@@ -3,158 +3,173 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout6"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.DetailsFragment">
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.DetailsFragment">
 
             <TextView
                 android:id="@+id/restaurantName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="15dp"
-                android:textSize="18sp"/>
+                android:text="@string/hello_blank_fragment"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/favouriteIcon"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/restaurantName"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:clickable="true"
                 android:contentDescription="@string/image"
                 android:focusable="true"
-                android:src="@drawable/ic_baseline_star_outline_24" />
+                android:src="@drawable/ic_baseline_star_outline_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurantName" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:padding="5dp">
-
-
-
-            <TextView
-                android:id="@+id/restaurantAddress"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment"
-                android:layout_toRightOf="@+id/locationIcon"
-                android:layout_marginLeft="3dp"
-                android:layout_toEndOf="@+id/locationIcon"
-                android:layout_marginStart="3dp" />
+                android:layout_marginTop="20dp"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-            <TextView
-                android:id="@+id/restaurantCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment"
-                android:layout_toRightOf="@+id/locationIcon"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="2dp"
-                android:layout_toEndOf="@+id/locationIcon"
-                android:layout_marginStart="3dp"
-                android:layout_below="@id/restaurantAddress"/>
 
-            <TextView
-                android:id="@+id/restaurantArea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment"
-                android:layout_toRightOf="@+id/locationIcon"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="2dp"
-                android:layout_toEndOf="@+id/locationIcon"
-                android:layout_marginStart="3dp"
-                android:layout_below="@id/restaurantCity"/>
+                <TextView
+                    android:id="@+id/restaurantAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_toEndOf="@+id/locationIcon"
+                    android:layout_toRightOf="@+id/locationIcon"
+                    android:text="@string/hello_blank_fragment" />
 
-            <TextView
-                android:id="@+id/restaurantPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/hello_blank_fragment"
-                android:layout_toRightOf="@+id/priceIcon"
-                android:layout_marginLeft="3dp"
-                android:layout_toEndOf="@+id/priceIcon"
-                android:layout_marginStart="3dp"
-                android:layout_below="@id/restaurantArea"
-                />
+                <TextView
+                    android:id="@+id/restaurantCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/restaurantAddress"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/locationIcon"
+                    android:layout_toRightOf="@+id/locationIcon"
+                    android:text="@string/hello_blank_fragment" />
 
-            <TextView
-                android:id="@+id/restaurantPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/hello_blank_fragment"
-                android:layout_toRightOf="@+id/phoneIcon"
-                android:layout_marginLeft="3dp"
-                android:layout_toEndOf="@+id/phoneIcon"
-                android:layout_marginStart="3dp"
-                android:layout_below="@id/priceIcon"
-                />
+                <TextView
+                    android:id="@+id/restaurantArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/restaurantCity"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/locationIcon"
+                    android:layout_toRightOf="@+id/locationIcon"
+                    android:text="@string/hello_blank_fragment" />
+
+                <TextView
+                    android:id="@+id/restaurantPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/restaurantArea"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/priceIcon"
+                    android:layout_toRightOf="@+id/priceIcon"
+                    android:text="@string/hello_blank_fragment" />
+
+                <TextView
+                    android:id="@+id/restaurantPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/priceIcon"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/phoneIcon"
+                    android:layout_toRightOf="@+id/phoneIcon"
+                    android:text="@string/hello_blank_fragment" />
+
+                <ImageView
+                    android:id="@+id/locationIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:contentDescription="@string/icon"
+                    app:srcCompat="@drawable/ic_baseline_location_on_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <ImageView
+                    android:id="@+id/priceIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/restaurantArea"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/icon"
+                    app:srcCompat="@drawable/ic_baseline_attach_money_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <ImageView
+                    android:id="@+id/phoneIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/priceIcon"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/icon"
+                    app:srcCompat="@drawable/ic_baseline_phone_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </RelativeLayout>
 
             <ImageView
-                android:id="@+id/locationIcon"
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/dark3"
+                android:src="@drawable/restaurant"
+                app:layout_constraintBottom_toTopOf="@id/relativeLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favouriteIcon" />
+
+            <Button
+                android:id="@+id/mapButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_baseline_location_on_24"
-                tools:ignore="VectorDrawableCompat"
-                android:contentDescription="@string/icon"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp" />
+                android:background="@drawable/rounded_button"
+                android:text="@string/open_map"
+                app:backgroundTint="@color/dark3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/relativeLayout"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <ImageView
-                android:id="@+id/priceIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_baseline_attach_money_24"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/restaurantArea"
-                tools:ignore="VectorDrawableCompat"
-                android:contentDescription="@string/icon"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp" />
-
-            <ImageView
-                android:id="@+id/phoneIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_baseline_phone_24"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/priceIcon"
-                tools:ignore="VectorDrawableCompat"
-                android:contentDescription="@string/icon"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"/>
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/dark3"
-            android:src="@drawable/restaurant"
-            app:layout_constraintBottom_toTopOf="@id/relativeLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/favouriteIcon"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

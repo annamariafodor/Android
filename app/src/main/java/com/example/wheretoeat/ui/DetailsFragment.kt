@@ -1,6 +1,7 @@
 package com.example.wheretoeat.ui
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.wheretoeat.MapsActivity
 import com.example.wheretoeat.R
 import com.example.wheretoeat.databinding.FragmentDetailsBinding
 import com.example.wheretoeat.models.Restaurant
@@ -80,6 +82,15 @@ class DetailsFragment : Fragment() {
                 }
             }
 
+        }
+
+        binding.mapButton.setOnClickListener{
+            val intent = Intent(context,MapsActivity::class.java).apply {
+                putExtra("lat", mRestaurantViewModel.currentRestaurant.value!!.lat)
+                putExtra("long", mRestaurantViewModel.currentRestaurant.value!!.lng)
+                putExtra("name", mRestaurantViewModel.currentRestaurant.value!!.name)
+            }
+            startActivity(intent)
         }
 
         return binding.root
