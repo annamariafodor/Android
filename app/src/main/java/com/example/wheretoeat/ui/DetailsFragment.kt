@@ -53,13 +53,13 @@ class DetailsFragment : Fragment() {
         binding.restaurantPhone.text = mRestaurantViewModel.currentRestaurant.value!!.phone
         binding.restaurantPrice.text =
             mRestaurantViewModel.currentRestaurant.value!!.price.toString()
+
+
+        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
+            lisOfFavourites = mUserViewModel.favourites.value!!
+        })
+        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
         checkFavourites()
-
-//        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
-        lisOfFavourites = mUserViewModel.favourites.value!!
-//        })
-//        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
-
 
         binding.favouriteIcon.setOnClickListener {
             val newFavList = mutableListOf<Restaurant>()
@@ -84,10 +84,6 @@ class DetailsFragment : Fragment() {
                     )
                 }
             }
-            mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
-                lisOfFavourites = mUserViewModel.favourites.value!!
-            })
-            mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
         }
 
         binding.mapButton.setOnClickListener {
@@ -103,11 +99,14 @@ class DetailsFragment : Fragment() {
     }
 
     fun checkFavourites() {
-        if (mUserViewModel.favourites.value!!.contains(mRestaurantViewModel.currentRestaurant.value)) {
-            binding.favouriteIcon.setImageResource(R.drawable.ic_baseline_star_yellow)
-        } else {
-            binding.favouriteIcon.setImageResource(R.drawable.ic_baseline_star_outline_24)
-        }
+        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
+            if (mUserViewModel.favourites.value!!.contains(mRestaurantViewModel.currentRestaurant.value)) {
+                binding.favouriteIcon.setImageResource(R.drawable.ic_baseline_star_yellow)
+            } else {
+                binding.favouriteIcon.setImageResource(R.drawable.ic_baseline_star_outline_24)
+            }
+        })
+        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
     }
 
 }
