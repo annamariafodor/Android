@@ -71,7 +71,6 @@ class RegistrationFragment : Fragment() {
                 editor.putString("address", binding.addressInput.text.toString())
                 editor.putString("password", binding.phoneInput.text.toString().toMd5())
                 editor.apply()
-                mUserViewModel.getFavourites(sharedPreferences.getString("email","").toString())
                 findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
             } else {
                 Toast.makeText(requireContext(), "Please input datas!", Toast.LENGTH_SHORT).show()
