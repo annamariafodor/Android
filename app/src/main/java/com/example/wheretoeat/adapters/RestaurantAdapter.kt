@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheretoeat.R
 import com.example.wheretoeat.models.Restaurant
+import com.example.wheretoeat.models.RestaurantHolder
 import com.example.wheretoeat.ui.HomeFragment
+
 
 class RestaurantAdapter(
     private var restaurants: List<Restaurant>,
@@ -55,6 +59,13 @@ class RestaurantAdapter(
         fun onItemClick(item: Restaurant)
     }
 
+    fun setData(newData: List<Restaurant>){
+        restaurants=newData
+        notifyDataSetChanged()
+    }
 
 }
+
+
+
 

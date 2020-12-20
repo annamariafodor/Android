@@ -5,8 +5,8 @@ import com.example.wheretoeat.models.RestaurantHolder
 
 class RestaurantRepository {
 
-    suspend fun getRestaurants(): RestaurantHolder{
-        return RestaurantApi.retrofitService.getRestaurants()
+    suspend fun getRestaurants(page:Int): RestaurantHolder{
+        return RestaurantApi.retrofitService.getRestaurants(page)
     }
 
 

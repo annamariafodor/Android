@@ -18,7 +18,7 @@ private val retrofit = Retrofit.Builder()
 
 interface RestaurantApiService {
     @GET("restaurants")
-    suspend fun getRestaurants(): RestaurantHolder
+    suspend fun getRestaurants(@Query("page") page: Int): RestaurantHolder
 }
 
 object RestaurantApi {

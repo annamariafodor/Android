@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -18,6 +20,7 @@ import com.example.wheretoeat.databinding.FragmentHomeBinding
 import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.viewmodels.RestaurantViewModel
 import com.example.wheretoeat.viewmodels.UserViewModel
+import java.util.*
 
 class HomeFragment : Fragment(),RestaurantAdapter.OnItemClickListener {
 
@@ -29,6 +32,9 @@ class HomeFragment : Fragment(),RestaurantAdapter.OnItemClickListener {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mUserViewModel: UserViewModel
     private lateinit var mRestaurantViewModel: RestaurantViewModel
+    private lateinit var restaurantList: List<Restaurant>
+    private lateinit var adapter: RestaurantAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +46,40 @@ class HomeFragment : Fragment(),RestaurantAdapter.OnItemClickListener {
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         mRestaurantViewModel = requireActivity().run {  ViewModelProvider(requireActivity()).get(RestaurantViewModel::class.java)}
 
-        val adapter = RestaurantAdapter(mRestaurantViewModel.restaurants.value!!,this)
+        restaurantList=mRestaurantViewModel.restaurants.value!!
+        adapter = RestaurantAdapter(mRestaurantViewModel.restaurants.value!!,this)
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val newList = mutableListOf<Restaurant>()
+                if (newText!!.isNotEmpty()) {
+                    newList.clear()
+                    val search = newText.toLowerCase(Locale.getDefault())
+                    mRestaurantViewModel.restaurants.value!!.forEach {
+                        if (it.name.toLowerCase(Locale.getDefault()).contains(search)){
+                            newList.add(it)
+                        }
+                    }
+
+                    adapter.setData(newList)
+                }
+
+                else{
+                    newList.addAll(restaurantList)
+                    adapter.setData(newList)
+                }
+
+                return true
+            }
+
+        })
 
         return binding.root
     }

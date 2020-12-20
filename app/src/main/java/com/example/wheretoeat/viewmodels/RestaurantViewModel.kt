@@ -18,9 +18,9 @@ class RestaurantViewModel: ViewModel() {
         repository = RestaurantRepository()
     }
 
-    fun getRestaurant(){
+    fun getRestaurant(page:Int){
         viewModelScope.launch(Dispatchers.IO){
-            val response = repository.getRestaurants()
+            val response = repository.getRestaurants(page)
             restaurants.postValue(response.restaurants)
         }
     }

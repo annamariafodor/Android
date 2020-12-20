@@ -52,7 +52,7 @@ class SplashFragment : Fragment() {
             }
         })
 
-        mRestaurantViewModel.getRestaurant()
+        mRestaurantViewModel.getRestaurant(2)
 
         return binding.root
     }
