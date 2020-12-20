@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.wheretoeat.models.Restaurant
 import com.example.wheretoeat.models.User
 import com.example.wheretoeat.room.UserDatabase
 import com.example.wheretoeat.repository.UserRepository
@@ -16,6 +17,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     val readAllData: LiveData<List<User>>
     private val repository: UserRepository
     var user: MutableLiveData<User> = MutableLiveData()
+    var favourites: MutableLiveData<List<Restaurant>> = MutableLiveData()
 
     init {
         val userDao = UserDatabase.getDatabase(application).userDao()

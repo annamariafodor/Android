@@ -5,9 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.example.wheretoeat.R
+import com.example.wheretoeat.adapters.RestaurantAdapter
+import com.example.wheretoeat.databinding.FragmentFavouritesBinding
+import com.example.wheretoeat.databinding.FragmentHomeBinding
+import com.example.wheretoeat.databinding.RestaurantListItemBinding
+import com.example.wheretoeat.viewmodels.RestaurantViewModel
+import com.example.wheretoeat.viewmodels.UserViewModel
 
 class FavouritesFragment : Fragment() {
+
+    private lateinit var binding: FragmentFavouritesBinding
+    private lateinit var bindingCardView: RestaurantListItemBinding
+    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mRestaurantViewModel: RestaurantViewModel
+    private lateinit var adapter: RestaurantAdapter
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +33,11 @@ class FavouritesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourites, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_favourites, container, false)
+
+
+
+        return binding.root
     }
 
 
