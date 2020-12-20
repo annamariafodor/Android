@@ -9,13 +9,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.wheretoeat.MapsActivity
 import com.example.wheretoeat.R
 import com.example.wheretoeat.databinding.FragmentDetailsBinding
 import com.example.wheretoeat.models.Restaurant
+import com.example.wheretoeat.models.User
 import com.example.wheretoeat.viewmodels.RestaurantViewModel
 import com.example.wheretoeat.viewmodels.UserViewModel
 
@@ -52,14 +55,14 @@ class DetailsFragment : Fragment() {
             mRestaurantViewModel.currentRestaurant.value!!.price.toString()
         checkFavourites()
 
-        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
-            lisOfFavourites = mUserViewModel.favourites.value!!
-        })
-        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
+//        mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
+        lisOfFavourites = mUserViewModel.favourites.value!!
+//        })
+//        mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
 
-        val newFavList = mutableListOf<Restaurant>()
+
         binding.favouriteIcon.setOnClickListener {
-
+            val newFavList = mutableListOf<Restaurant>()
             if (lisOfFavourites.contains(mRestaurantViewModel.currentRestaurant.value)) {
                 newFavList.addAll(lisOfFavourites)
                 newFavList.remove(mRestaurantViewModel.currentRestaurant.value)
@@ -81,11 +84,14 @@ class DetailsFragment : Fragment() {
                     )
                 }
             }
-
+            mUserViewModel.favourites.observe(viewLifecycleOwner, Observer {
+                lisOfFavourites = mUserViewModel.favourites.value!!
+            })
+            mUserViewModel.getFavourites(sharedPreferences.getString("email", "").toString())
         }
 
-        binding.mapButton.setOnClickListener{
-            val intent = Intent(context,MapsActivity::class.java).apply {
+        binding.mapButton.setOnClickListener {
+            val intent = Intent(context, MapsActivity::class.java).apply {
                 putExtra("lat", mRestaurantViewModel.currentRestaurant.value!!.lat)
                 putExtra("long", mRestaurantViewModel.currentRestaurant.value!!.lng)
                 putExtra("name", mRestaurantViewModel.currentRestaurant.value!!.name)
@@ -102,9 +108,6 @@ class DetailsFragment : Fragment() {
         } else {
             binding.favouriteIcon.setImageResource(R.drawable.ic_baseline_star_outline_24)
         }
-
-
     }
-
 
 }
